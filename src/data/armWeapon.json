@@ -1,0 +1,312 @@
+[
+  {
+    "value": "0",
+    "label": "アバランシュナックル",
+    "type": "A",
+    "power": "6",
+    "range": "1～2",
+    "avoid": "2",
+    "page": "94",
+    "desc": ""
+  },
+  {
+    "value": "1",
+    "label": "アブソリュートサイズ",
+    "type": "A",
+    "power": "9",
+    "range": "1",
+    "avoid": "2",
+    "page": "94",
+    "desc": ""
+  },
+  {
+    "value": "2",
+    "label": "イグニッションダガー",
+    "type": "A",
+    "power": "9",
+    "range": "1",
+    "avoid": "2",
+    "page": "94",
+    "desc": ""
+  },
+  {
+    "value": "3",
+    "label": "ギガンティアハンマー",
+    "type": "A",
+    "power": "8",
+    "range": "1～2",
+    "avoid": "1",
+    "page": "94",
+    "desc": ""
+  },
+  {
+    "value": "4",
+    "label": "グレイジングクロー",
+    "type": "A",
+    "power": "9",
+    "range": "1",
+    "avoid": "2",
+    "page": "94",
+    "desc": ""
+  },
+  {
+    "value": "5",
+    "label": "コスモスブレイド",
+    "type": "A",
+    "power": "5",
+    "range": "1～2",
+    "avoid": "2",
+    "page": "94",
+    "desc": ""
+  },
+  {
+    "value": "6",
+    "label": "ストライクソード",
+    "type": "A",
+    "power": "7",
+    "range": "1～2",
+    "avoid": "2",
+    "page": "94",
+    "desc": ""
+  },
+  {
+    "value": "7",
+    "label": "チェーンウィップ",
+    "type": "A",
+    "power": "6",
+    "range": "2～3",
+    "avoid": "2",
+    "page": "95",
+    "desc": ""
+  },
+  {
+    "value": "8",
+    "label": "ディバイドセイバー",
+    "type": "A",
+    "power": "15",
+    "range": "1",
+    "avoid": "3",
+    "page": "95",
+    "desc": ""
+  },
+  {
+    "value": "9",
+    "label": "パイルブレイカー",
+    "type": "A",
+    "power": "15",
+    "range": "1～2",
+    "avoid": "2",
+    "page": "95",
+    "desc": ""
+  },
+  {
+    "value": "10",
+    "label": "バインドアンカー",
+    "type": "A",
+    "power": "9",
+    "range": "1～3",
+    "avoid": "3",
+    "page": "95",
+    "desc": ""
+  },
+  {
+    "value": "11",
+    "label": "ブラスティアフィンガー",
+    "type": "A",
+    "power": "20",
+    "range": "1",
+    "avoid": "1",
+    "page": "95",
+    "desc": ""
+  },
+  {
+    "value": "12",
+    "label": "ブラストガンセイバー",
+    "type": "A",
+    "power": "10",
+    "range": "1～2",
+    "avoid": "2",
+    "page": "95",
+    "desc": ""
+  },
+  {
+    "value": "13",
+    "label": "ヘブンリィスピア",
+    "type": "A",
+    "power": "9",
+    "range": "2",
+    "avoid": "2",
+    "page": "95",
+    "desc": ""
+  },
+  {
+    "value": "14",
+    "label": "ミルキィパラソル",
+    "type": "A",
+    "power": "8",
+    "range": "1～2",
+    "avoid": "2",
+    "page": "95",
+    "desc": ""
+  },
+  {
+    "value": "15",
+    "label": "アクセルハンドガン",
+    "type": "A",
+    "power": "5",
+    "range": "3～4",
+    "avoid": "2",
+    "page": "96",
+    "desc": ""
+  },
+  {
+    "value": "16",
+    "label": "アサルトショットガン",
+    "type": "A",
+    "power": "12",
+    "range": "1～3",
+    "avoid": "2",
+    "page": "96",
+    "desc": ""
+  },
+  {
+    "value": "17",
+    "label": "グラヴィティバレル",
+    "type": "A",
+    "power": "6",
+    "range": "5～6",
+    "avoid": "2",
+    "page": "96",
+    "desc": ""
+  },
+  {
+    "value": "18",
+    "label": "クロスバスターライフル",
+    "type": "A",
+    "power": "5",
+    "range": "3～5",
+    "avoid": "2",
+    "page": "96",
+    "desc": ""
+  },
+  {
+    "value": "19",
+    "label": "スナイパーライフル",
+    "type": "A",
+    "power": "9",
+    "range": "5～8",
+    "avoid": "2",
+    "page": "96",
+    "desc": ""
+  },
+  {
+    "value": "20",
+    "label": "スライドカノン",
+    "type": "A",
+    "power": "6",
+    "range": "4～5",
+    "avoid": "1",
+    "page": "96",
+    "desc": ""
+  },
+  {
+    "value": "21",
+    "label": "ハイパーレーザーカノン",
+    "type": "A",
+    "power": "15",
+    "range": "3～6",
+    "avoid": "2",
+    "page": "96",
+    "desc": ""
+  },
+  {
+    "value": "22",
+    "label": "ブレイジングキャノン",
+    "type": "A",
+    "power": "8",
+    "range": "4～6",
+    "avoid": "2",
+    "page": "96",
+    "desc": ""
+  },
+  {
+    "value": "23",
+    "label": "プレシャスブラスター",
+    "type": "A",
+    "power": "5",
+    "range": "3～4",
+    "avoid": "1",
+    "page": "97",
+    "desc": ""
+  },
+  {
+    "value": "24",
+    "label": "ヘルブラストマグナム",
+    "type": "A",
+    "power": "11",
+    "range": "3～4",
+    "avoid": "3",
+    "page": "97",
+    "desc": ""
+  },
+  {
+    "value": "25",
+    "label": "メガエクスバズーカ",
+    "type": "A",
+    "power": "8",
+    "range": "3～5",
+    "avoid": "2",
+    "page": "97",
+    "desc": ""
+  },
+  {
+    "value": "26",
+    "label": "アブソームフレーム",
+    "type": "R",
+    "power": "ー",
+    "range": "ー",
+    "avoid": "ー",
+    "page": "97",
+    "desc": ""
+  },
+  {
+    "value": "27",
+    "label": "バリアブルシールド",
+    "type": "R",
+    "power": "ー",
+    "range": "ー",
+    "avoid": "ー",
+    "page": "97",
+    "desc": ""
+  },
+  {
+    "value": "28",
+    "label": "リアクティブアーマー",
+    "type": "R",
+    "power": "ー",
+    "range": "ー",
+    "avoid": "ー",
+    "page": "97",
+    "desc": ""
+  },
+  {
+    "value": "29",
+    "label": "ウェディンググローブ",
+    "type": "P",
+    "power": "ー",
+    "range": "ー",
+    "avoid": "ー",
+    "page": "97",
+    "desc": ""
+  },
+  {
+    "value": "30",
+    "label": "フェアリーバックラー",
+    "type": "P",
+    "power": "ー",
+    "range": "ー",
+    "avoid": "ー",
+    "page": "97",
+    "desc": ""
+  }
+]

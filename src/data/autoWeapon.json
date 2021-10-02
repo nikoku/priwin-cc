@@ -1,0 +1,22 @@
+[
+  {
+    "value": "0",
+    "label": "タックル",
+    "type": "A",
+    "power": "5",
+    "range": "1",
+    "avoid": "1",
+    "page": "93",
+    "desc": ""
+  },
+  {
+    "value": "1",
+    "label": "クロスユニゾン",
+    "type": "A",
+    "power": "効果参照",
+    "range": "効果参照",
+    "avoid": "効果参照",
+    "page": "93",
+    "desc": ""
+  }
+]

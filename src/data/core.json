@@ -1,0 +1,86 @@
+[
+  {
+    "value": "0",
+    "label": "サンドリヨン",
+    "hp": "50",
+    "tp": "15",
+    "ss": "5",
+    "move": "2",
+    "special": "時限換装",
+    "variation": "1",
+    "page": "81",
+    "desc": ""
+  },
+  {
+    "value": "1",
+    "label": "マッチセラー",
+    "hp": "60",
+    "tp": "20",
+    "ss": "3",
+    "move": "1",
+    "special": "超火力砲",
+    "variation": "0",
+    "page": "82",
+    "desc": ""
+  },
+  {
+    "value": "2",
+    "label": "ラプンツェル",
+    "hp": "45",
+    "tp": "15",
+    "ss": "6",
+    "move": "2",
+    "special": "急速変形",
+    "variation": "1",
+    "page": "83",
+    "desc": ""
+  },
+  {
+    "value": "3",
+    "label": "スカーレットフード",
+    "hp": "40",
+    "tp": "10",
+    "ss": "7",
+    "move": "3",
+    "special": "高速機動",
+    "variation": "0",
+    "page": "84",
+    "desc": ""
+  },
+  {
+    "value": "4",
+    "label": "スリーピングビューティー",
+    "hp": "50",
+    "tp": "10",
+    "ss": "5",
+    "move": "3",
+    "special": "発光",
+    "variation": "0",
+    "page": "85",
+    "desc": ""
+  },
+  {
+    "value": "5",
+    "label": "ワンダーアリス",
+    "hp": "60",
+    "tp": "10",
+    "ss": "4",
+    "move": "2",
+    "special": "並列換装",
+    "variation": "2",
+    "page": "86",
+    "desc": ""
+  },
+  {
+    "value": "6",
+    "label": "スノウホワイト",
+    "hp": "40",
+    "tp": "20",
+    "ss": "6",
+    "move": "2",
+    "special": "二段階換装",
+    "variation": "2",
+    "page": "87",
+    "desc": ""
+  }
+]

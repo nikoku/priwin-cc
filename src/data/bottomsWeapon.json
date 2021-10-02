@@ -1,0 +1,152 @@
+[
+  {
+    "value": "0",
+    "label": "アヴァロンライフル",
+    "type": "A",
+    "power": "6",
+    "range": "3～4",
+    "avoid": "2",
+    "page": "100",
+    "desc": ""
+  },
+  {
+    "value": "1",
+    "label": "アサルトレッグ",
+    "type": "A",
+    "power": "8",
+    "range": "1",
+    "avoid": "2",
+    "page": "100",
+    "desc": ""
+  },
+  {
+    "value": "2",
+    "label": "アドバンスドスラスター",
+    "type": "A",
+    "power": "ー",
+    "range": "ー",
+    "avoid": "ー",
+    "page": "100",
+    "desc": ""
+  },
+  {
+    "value": "3",
+    "label": "オールレンジアシスター",
+    "type": "A",
+    "power": "ー",
+    "range": "ー",
+    "avoid": "ー",
+    "page": "100",
+    "desc": ""
+  },
+  {
+    "value": "4",
+    "label": "グレネイドビット",
+    "type": "A",
+    "power": "4",
+    "range": "3～5",
+    "avoid": "3",
+    "page": "100",
+    "desc": ""
+  },
+  {
+    "value": "5",
+    "label": "スカートビット",
+    "type": "A",
+    "power": "5",
+    "range": "4～6",
+    "avoid": "2",
+    "page": "100",
+    "desc": ""
+  },
+  {
+    "value": "6",
+    "label": "スコーピオンテイル",
+    "type": "A",
+    "power": "7",
+    "range": "1～2",
+    "avoid": "2",
+    "page": "100",
+    "desc": ""
+  },
+  {
+    "value": "7",
+    "label": "スフィアプレッシャー",
+    "type": "A",
+    "power": "0",
+    "range": "効果参照",
+    "avoid": "2",
+    "page": "101",
+    "desc": ""
+  },
+  {
+    "value": "8",
+    "label": "ディスチャージャー",
+    "type": "A",
+    "power": "ー",
+    "range": "ー",
+    "avoid": "ー",
+    "page": "101",
+    "desc": ""
+  },
+  {
+    "value": "9",
+    "label": "ハイヒールドロップ",
+    "type": "A",
+    "power": "10",
+    "range": "1",
+    "avoid": "2",
+    "page": "101",
+    "desc": ""
+  },
+  {
+    "value": "10",
+    "label": "プラズマブースター",
+    "type": "A",
+    "power": "ー",
+    "range": "ー",
+    "avoid": "ー",
+    "page": "101",
+    "desc": ""
+  },
+  {
+    "value": "11",
+    "label": "カウンターフィールド",
+    "type": "R",
+    "power": "ー",
+    "range": "ー",
+    "avoid": "ー",
+    "page": "101",
+    "desc": ""
+  },
+  {
+    "value": "12",
+    "label": "スペアブースター",
+    "type": "R",
+    "power": "ー",
+    "range": "ー",
+    "avoid": "ー",
+    "page": "101",
+    "desc": ""
+  },
+  {
+    "value": "13",
+    "label": "アディショナルブースター",
+    "type": "P",
+    "power": "ー",
+    "range": "ー",
+    "avoid": "ー",
+    "page": "101",
+    "desc": ""
+  },
+  {
+    "value": "14",
+    "label": "クリアブーツ",
+    "type": "P",
+    "power": "ー",
+    "range": "ー",
+    "avoid": "ー",
+    "page": "101",
+    "desc": ""
+  }
+]
