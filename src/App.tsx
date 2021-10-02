@@ -78,6 +78,7 @@ export default function App() {
       }
 
       const data = JSON.parse(json);
+      document.title = `${data["pcName"]} － プリンセスウイング キャラクターシート`;
 
       skillValues.forEach((v, i) => v[1](skillList[data["skills"][i]]));
       princessCoreValue[1](princessCoreList[data["core"]]);
