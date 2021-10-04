@@ -5,6 +5,7 @@ import bottomsWeapons from "./data/bottomsWeapon.json";
 import wingDrives from "./data/wingDrive.json";
 import cores from "./data/core.json";
 import skills from "./data/skill.json";
+import updatePrograms from "./data/update.json";
 
 export type Weapon = {
   value: number;
@@ -63,3 +64,23 @@ export type Skill = {
 
 // @ts-ignore
 export const skillList: Skill[] = skills;
+
+export type UpdateProgram = {
+  label: string;
+  cost: number;
+  desc: string;
+  page: number;
+  name:
+    | "changeSkill"
+    | "powerUp"
+    | "extend"
+    | "radicalization"
+    | "paint"
+    | "unite"
+    | "rayConstruction"
+    | "addVariation"
+    | "exploit";
+};
+
+// @ts-ignore
+export const updateList: UpdateProgram[] = updatePrograms;

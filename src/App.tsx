@@ -1,71 +1,69 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Grid from "@material-ui/core/Grid";
 import "./styles.css";
 import { Skills } from "./skills";
 import { PrincessCores } from "./cores";
 import { WingDrives } from "./wingDrives";
 import { Variations, Weapons } from "./weapons";
-import { Skill, PrincessCore, Weapon, WingDrive } from "./data";
+import { princessCoreList, updateList } from "./data";
 import { getKey, Memory, subscribeData } from "./memory";
-
-import {
-  skillList,
-  princessCoreList,
-  wingDriveList,
-  armList,
-  topsList,
-  bottomsList
-} from "./data";
+import { SheetInfo } from "./sheetInfo";
 
 export default function App() {
-  const skillValues = [
-    useState<Skill | null>(null),
-    useState<Skill | null>(null),
-    useState<Skill | null>(null)
-  ];
-  const princessCoreValue = useState<PrincessCore | null>(null);
-  const wingDriveValue = useState<WingDrive | null>(null);
-  const weaponValues = [
-    useState<Weapon | null>(null),
-    useState<Weapon | null>(null),
-    useState<Weapon | null>(null),
-    useState<Weapon | null>(null)
-  ];
+  const skillValues = [useState(-1), useState(-1), useState(-1)];
+  const princessCoreValue = useState(-1);
+  const wingDriveValue = useState(-1);
+  const weaponValues = [useState(-1), useState(-1), useState(-1), useState(-1)];
   const variation1Values = [
-    useState<Weapon | null>(null),
-    useState<Weapon | null>(null),
-    useState<Weapon | null>(null),
-    useState<Weapon | null>(null)
+    useState(-1),
+    useState(-1),
+    useState(-1),
+    useState(-1)
   ];
   const variation2Values = [
-    useState<Weapon | null>(null),
-    useState<Weapon | null>(null),
-    useState<Weapon | null>(null),
-    useState<Weapon | null>(null)
+    useState(-1),
+    useState(-1),
+    useState(-1),
+    useState(-1)
   ];
   const variation3Values = [
-    useState<Weapon | null>(null),
-    useState<Weapon | null>(null),
-    useState<Weapon | null>(null),
-    useState<Weapon | null>(null)
+    useState(-1),
+    useState(-1),
+    useState(-1),
+    useState(-1)
   ];
   const [pcName, setPcName] = useState("");
   const [plName, setPlName] = useState("");
   const [memo, setMemo] = useState("");
+  const [updateState, setUpdateState] = useState({
+    changeSkill: 0,
+    powerUp: 0,
+    extend: 0,
+    radicalization: 0,
+    paint: 0,
+    unite: 0,
+    rayConstruction: 0,
+    addVariation: 0,
+    exploit: 0
+  });
 
   const dataState = {
     pcName: pcName,
     plName: plName,
-    skills: skillValues.map((n) => n[0]?.value),
-    core: princessCoreValue[0]?.value,
-    wingDrive: wingDriveValue[0]?.value,
-    weapons: weaponValues.map((n) => n[0]?.value),
-    variations1: variation1Values.map((n) => n[0]?.value),
-    variations2: variation2Values.map((n) => n[0]?.value),
-    variations3: variation3Values.map((n) => n[0]?.value),
-    memo: memo
+    skills: skillValues.map((n) => n[0]),
+    core: princessCoreValue[0],
+    wingDrive: wingDriveValue[0],
+    weapons: weaponValues.map((n) => n[0]),
+    variations1: variation1Values.map((n) => n[0]),
+    variations2: variation2Values.map((n) => n[0]),
+    variations3: variation3Values.map((n) => n[0]),
+    memo: memo,
+    update: updateState
   };
 
-  useEffect(() => {
+  const [first, setFirst] = useState(true);
+  if (first) {
+    setFirst(false);
     const func = async () => {
       const key = getKey();
       if (key === null) {
@@ -80,80 +78,71 @@ export default function App() {
       const data = JSON.parse(json);
       document.title = `${data["pcName"]} － プリンセスウイング キャラクターシート`;
 
-      skillValues.forEach((v, i) => v[1](skillList[data["skills"][i]]));
-      princessCoreValue[1](princessCoreList[data["core"]]);
-      wingDriveValue[1](wingDriveList[data["wingDrive"]]);
-      const weaponMatrix = [armList, armList, topsList, bottomsList];
-      weaponValues.forEach((v, i) => v[1](weaponMatrix[i][data["weapons"][i]]));
-      variation1Values.forEach((v, i) =>
-        v[1](weaponMatrix[i][data["variations1"][i]])
-      );
-      variation2Values.forEach((v, i) =>
-        v[1](weaponMatrix[i][data["variations2"][i]])
-      );
-      variation3Values.forEach((v, i) =>
-        v[1](weaponMatrix[i][data["variations3"][i]])
-      );
+      skillValues.forEach((v, i) => v[1](data["skills"][i] ?? -1));
+      princessCoreValue[1](data["core"] ?? -1);
+      wingDriveValue[1](data["wingDrive"]);
+      weaponValues.forEach((v, i) => v[1](data["weapons"][i]));
+      variation1Values.forEach((v, i) => v[1](data["variations1"][i]));
+      variation2Values.forEach((v, i) => v[1](data["variations2"][i]));
+      variation3Values.forEach((v, i) => v[1](data["variations3"][i]));
       setPcName(data["pcName"]);
       setPlName(data["plName"]);
       setMemo(data["memo"]);
+      setUpdateState({ ...updateState, ...data["update"] });
     };
     func();
-  }, []);
+  }
 
-  const variationCount = princessCoreValue[0]?.variation ?? 0;
+  const variationCount = princessCoreList[princessCoreValue[0]]?.variation ?? 0;
   const getDisplayVariation = (variationIndex: number) =>
     variationCount >= variationIndex ? {} : { display: "none" };
 
+  const requiredExp = updateList
+    .map((update) => updateState[update.name] * update.cost)
+    .reduce((a, x) => a + x);
+
   return (
     <div className="App" style={{ textAlign: "left" }}>
-      <h2>プリンセスウイング　キャラクターシート</h2>
-      <Memory data={dataState} />
-      PC名
-      <textarea
-        value={pcName}
-        onChange={(e) => setPcName(e.target.value)}
-        style={{ width: "10em" }}
-      />
-      PL名
-      <textarea
-        value={plName}
-        onChange={(e) => setPlName(e.target.value)}
-        style={{ width: "10em" }}
-      />
-      <br />
-      <br />
-      メモ
-      <br />
-      <textarea
-        value={memo}
-        onChange={(e) => setMemo(e.target.value)}
-        style={{ width: "38em", height: "12ex" }}
-      />
-      <br />
-      特技
-      <Skills skills={skillValues} />
-      プリンセスコア
-      <PrincessCores cores={princessCoreValue} />
-      ウイングドライブ
-      <WingDrives wingDrives={wingDriveValue} />
-      武装
-      <Weapons weapons={weaponValues} />
-      <br />
-      <div style={getDisplayVariation(1)}>
-        バリエーション①
-        <Variations weapons={variation1Values} />
-        <br />
-      </div>
-      <div style={getDisplayVariation(2)}>
-        バリエーション②
-        <Variations weapons={variation2Values} />
-        <br />
-      </div>
-      <div style={getDisplayVariation(3)}>
-        バリエーション③
-        <Variations weapons={variation3Values} />
-      </div>
+      <Grid container direction="column" spacing={1}>
+        <Grid item>
+          <h2>プリンセスウイング　キャラクターシート</h2>
+        </Grid>
+        <Grid item container spacing={1}>
+          <Memory data={dataState} />
+        </Grid>
+        <Grid item>
+          <SheetInfo
+            pcState={[pcName, setPcName]}
+            plState={[plName, setPlName]}
+            memoState={[memo, setMemo]}
+            exp={requiredExp}
+          />
+        </Grid>
+        <Grid item>
+          <Skills skills={skillValues} />
+        </Grid>
+        <Grid item>
+          <PrincessCores
+            cores={princessCoreValue}
+            updateState={[updateState, setUpdateState]}
+          />
+        </Grid>
+        <Grid item>
+          <WingDrives wingDrives={wingDriveValue} />
+        </Grid>
+        <Grid item>
+          <Weapons weapons={weaponValues} />
+        </Grid>
+        <Grid item style={getDisplayVariation(1)}>
+          <Variations index={1} weapons={variation1Values} />
+        </Grid>
+        <Grid item style={getDisplayVariation(2)}>
+          <Variations index={2} weapons={variation2Values} />
+        </Grid>
+        <Grid item style={getDisplayVariation(3)}>
+          <Variations index={3} weapons={variation3Values} />
+        </Grid>
+      </Grid>
     </div>
   );
 }

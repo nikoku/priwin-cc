@@ -1,52 +1,39 @@
-import { useCallback } from "react";
-import Select from "react-select";
-import { WingDrive, wingDriveList } from "./data";
-
-const containerStyleFn = (base: object) => ({
-  ...base,
-  width: "17em"
-});
+import { TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
+import { MyTable } from "./table";
+import { Select } from "./select";
+import { wingDriveList } from "./data";
 
 const Header = () => {
-  const style = { minWidth: "21em" };
   return (
-    <thead>
-      <tr>
-        <th>ドライブ名</th>
-        <th style={style}>タイミング</th>
-        <th>参照P</th>
-      </tr>
-    </thead>
+    <TableHead>
+      <TableRow>
+        <TableCell>ドライブ名</TableCell>
+        <TableCell align="center" style={{ width: "21em" }}>
+          タイミング
+        </TableCell>
+        <TableCell align="center">参照P</TableCell>
+      </TableRow>
+    </TableHead>
   );
 };
 
-type State = [
-  WingDrive | null,
-  React.Dispatch<React.SetStateAction<WingDrive | null>>
-];
+type State = [number, React.Dispatch<React.SetStateAction<number>>];
 
 export const WingDrives = ({ wingDrives }: { wingDrives: State }) => {
   const [value, setValue] = wingDrives;
-  const handleChange = useCallback((inputValue) => setValue(inputValue), []);
+  const cell = wingDriveList[value ?? -1];
   return (
-    <table style={{ fontSize: "small" }}>
+    <MyTable title="ウイングドライブ">
       <Header />
-      <tbody>
-        <tr>
-          <td>
-            <Select
-              value={value}
-              options={wingDriveList}
-              onChange={handleChange}
-              styles={{
-                container: containerStyleFn
-              }}
-            />
-          </td>
-          <td>{value?.timing ?? "ー"}</td>
-          <td>{value?.page ?? "ー"}</td>
-        </tr>
-      </tbody>
-    </table>
+      <TableBody>
+        <TableRow key={0}>
+          <TableCell>
+            <Select value={value} setValue={setValue} list={wingDriveList} />
+          </TableCell>
+          <TableCell align="center">{cell?.timing ?? "ー"}</TableCell>
+          <TableCell align="center">{cell?.page ?? "ー"}</TableCell>
+        </TableRow>
+      </TableBody>
+    </MyTable>
   );
 };
