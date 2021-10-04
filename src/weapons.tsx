@@ -92,9 +92,21 @@ export const Weapons = () => {
   );
 };
 
+const getVariationNumber = (index: 1 | 2 | 3) => {
+  switch (index) {
+    case 1:
+      return "variations1";
+    case 2:
+      return "variations2";
+    case 3:
+      return "variations3";
+    default:
+      throw Error("illegal index");
+  }
+};
+
 export const Variations = ({ index }: { index: 1 | 2 | 3 }) => {
-  type VariationNumber= `variations${typeof index}`;
-  const variationNumber="variations" + index as VariationNumber
+  const variationNumber = getVariationNumber(index);
   const { [variationNumber]: weapons } = useStorageContext();
   return (
     <MyTable title={`バリエーション${[null, "①", "②", "③"][index]}`}>
