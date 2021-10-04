@@ -5,6 +5,8 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import { MyPaper } from "./paper";
+import { useStorageContext } from "./storage";
+import { updateList } from "./data";
 
 const TextBox = ({
   value,
@@ -73,17 +75,16 @@ const ReadOnlyTextBox = ({
   );
 };
 
-export const SheetInfo = ({
-  pcState,
-  plState,
-  memoState,
-  exp
-}: {
-  pcState: [string, any];
-  plState: [string, any];
-  memoState: [string, any];
-  exp: number;
-}) => {
+const useCalcExp = () => {
+  const { update } = useStorageContext();
+  return updateList
+    .map(({ name, cost }) => update[0][name] * cost)
+    .reduce((a, x) => a + x);
+};
+
+export const SheetInfo = () => {
+  const { pcName, plName, memo } = useStorageContext();
+  const exp = useCalcExp();
   return (
     <MyPaper>
       <Box p={0.1}>
@@ -93,15 +94,15 @@ export const SheetInfo = ({
             <Grid item>
               <TextBox
                 label="キャラクター名"
-                value={pcState[0]}
-                setValue={pcState[1]}
+                value={pcName[0]}
+                setValue={pcName[1]}
               />
             </Grid>
             <Grid item>
               <TextBox
                 label="プレイヤー名"
-                value={plState[0]}
-                setValue={plState[1]}
+                value={plName[0]}
+                setValue={plName[1]}
               />
             </Grid>
             <Grid item>
@@ -116,8 +117,8 @@ export const SheetInfo = ({
             <TextBox
               label="メモ(改行可)"
               multiline={true}
-              value={memoState[0]}
-              setValue={memoState[1]}
+              value={memo[0]}
+              setValue={memo[1]}
               minWidth="30.8em"
             />
           </Grid>

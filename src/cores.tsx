@@ -2,8 +2,9 @@ import { TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
 import { MyTableWithoutPaper } from "./table";
 import { MyPaper } from "./paper";
 import { Select } from "./select";
-import { princessCoreList, updateList } from "./data";
-import { Update, UpdateState } from "./update";
+import { princessCoreList } from "./data";
+import { Update } from "./update";
+import { useStorageContext } from "./storage";
 
 const Header = () => {
   return (
@@ -21,27 +22,19 @@ const Header = () => {
   );
 };
 
-type CoreState = [number, React.Dispatch<React.SetStateAction<number>>];
+export const PrincessCores = () => {
+  const { princessCore, update } = useStorageContext();
+  const cell = princessCoreList[princessCore[0] ?? -1];
 
-export const PrincessCores = ({
-  cores,
-  updateState
-}: {
-  cores: CoreState;
-  updateState: UpdateState;
-}) => {
-  const [value, setValue] = cores;
-  const cell = princessCoreList[value ?? -1];
-
-  const { extend, radicalization } = updateState[0];
+  const { extend, radicalization } = update[0];
   const calcUpdate = (
     value: number | null,
     update: number,
     coefficient: number
   ) => {
-    const raw = value ?? "ー";
+    const raw = princessCore[0] ?? "ー";
     return update > 0
-      ? String(Number(value ?? 0) + update * coefficient) + `(${raw})`
+      ? String(Number(princessCore[0] ?? 0) + update * coefficient) + `(${raw})`
       : raw;
   };
   const hp = calcUpdate(cell?.hp, extend, 10);
@@ -57,8 +50,8 @@ export const PrincessCores = ({
           <TableRow key={0}>
             <TableCell>
               <Select
-                value={value}
-                setValue={setValue}
+                value={princessCore[0]}
+                setValue={princessCore[1]}
                 list={princessCoreList}
               />
             </TableCell>
@@ -71,7 +64,7 @@ export const PrincessCores = ({
           </TableRow>
         </TableBody>
       </MyTableWithoutPaper>
-      <Update updateState={updateState} />
+      <Update updateState={update} />
     </MyPaper>
   );
 };

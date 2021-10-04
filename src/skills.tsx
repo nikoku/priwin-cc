@@ -2,6 +2,7 @@ import { TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
 import { MyTable } from "./table";
 import { Select } from "./select";
 import { skillList } from "./data";
+import { useStorageContext } from "./storage";
 
 const Header = () => {
   return (
@@ -31,7 +32,8 @@ const SkillTr = ({ state, index }: { state: State; index: number }) => {
   );
 };
 
-export const Skills = ({ skills }: { skills: State[] }) => {
+export const Skills = () => {
+  const { skills } = useStorageContext();
   return (
     <MyTable title="特技">
       <Header />

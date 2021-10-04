@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 import SaveIcon from "@material-ui/icons/Save";
 import DeleteIcon from "@material-ui/icons/Delete";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+import { useStorageContext, useStorageData } from "./storage";
 
 import UUID from "uuidjs";
 
@@ -41,13 +42,8 @@ export const subscribeData = (id: string) =>
     .then((response) => response.json())
     .then((data) => data[0]["json"]);
 
-const Save = ({
-  data,
-  style
-}: {
-  data: object;
-  style: React.CSSProperties;
-}) => {
+const Save = ({ style }: { style: React.CSSProperties }) => {
+  const data = useStorageData();
   const saveData = () => {
     const json = JSON.stringify(data);
     const key =
@@ -70,13 +66,8 @@ const Save = ({
   );
 };
 
-const Copy = ({
-  data,
-  style
-}: {
-  data: object;
-  style: React.CSSProperties;
-}) => {
+const Copy = ({ style }: { style: React.CSSProperties }) => {
+  const data = useStorageData();
   const copyData = () => {
     const json = JSON.stringify(data);
     const key = UUID.generate();
@@ -98,13 +89,8 @@ const Copy = ({
   );
 };
 
-const Publish = ({
-  data,
-  style
-}: {
-  data: object;
-  style: React.CSSProperties;
-}) => {
+const Publish = ({ style }: { style: React.CSSProperties }) => {
+  const data = useStorageData();
   const publishData = () => {
     const func = async () => {
       await deleteDBData();
@@ -155,7 +141,7 @@ const Delete = ({ style }: { style: React.CSSProperties }) => {
   );
 };
 
-export const Memory = ({ data }: { data: object }) => {
+export const Memory = () => {
   const key = getKey();
   const hasKey = key !== null;
   const hasLocal = localStorage.getItem(key ?? "") !== null;
@@ -166,13 +152,13 @@ export const Memory = ({ data }: { data: object }) => {
   return (
     <>
       <Grid item>
-        <Save data={data} style={visibility(!hasKey || hasLocal)} />
+        <Save style={visibility(!hasKey || hasLocal)} />
       </Grid>
       <Grid item>
-        <Copy data={data} style={visibility(hasKey)} />
+        <Copy style={visibility(hasKey)} />
       </Grid>
       <Grid item>
-        <Publish data={data} style={visibility(hasLocal)} />
+        <Publish style={visibility(hasLocal)} />
       </Grid>
       <Grid item>
         <Delete style={visibility(hasLocal)} />

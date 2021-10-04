@@ -1,8 +1,11 @@
 import { useState } from "react";
+import Grid from "@material-ui/core/Grid";
 import { TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
 import { MyTable } from "./table";
 import { GroupSelect } from "./select";
 import { Weapon, autoList, armList, topsList, bottomsList } from "./data";
+import { princessCoreList } from "./data";
+import { useStorageContext } from "./storage";
 
 const parts = [
   "ー/ー",
@@ -70,9 +73,8 @@ const Header = () => {
   );
 };
 
-type State = [number, React.Dispatch<React.SetStateAction<number>>];
-
-export const Weapons = ({ weapons }: { weapons: State[] }) => {
+export const Weapons = () => {
+  const { weapons } = useStorageContext();
   const tackleState = useState(0);
   const clossState = useState(1);
   return (
@@ -90,13 +92,10 @@ export const Weapons = ({ weapons }: { weapons: State[] }) => {
   );
 };
 
-export const Variations = ({
-  weapons,
-  index
-}: {
-  weapons: State[];
-  index: 1 | 2 | 3;
-}) => {
+export const Variations = ({ index }: { index: 1 | 2 | 3 }) => {
+  type VariationNumber= `variations${typeof index}`;
+  const variationNumber="variations" + index as VariationNumber
+  const { [variationNumber]: weapons } = useStorageContext();
   return (
     <MyTable title={`バリエーション${[null, "①", "②", "③"][index]}`}>
       <Header />
@@ -107,5 +106,27 @@ export const Variations = ({
         <WeaponTr index={5} list={bottomsList} state={weapons[3]} />
       </TableBody>
     </MyTable>
+  );
+};
+
+export const VariationPanel = () => {
+  const { princessCore } = useStorageContext();
+  const variationMax = princessCoreList[princessCore[0]]?.variation ?? 0;
+
+  const getDisplayVariation = (variationIndex: number) =>
+    variationMax >= variationIndex ? {} : { display: "none" };
+
+  return (
+    <>
+      <Grid item style={getDisplayVariation(1)}>
+        <Variations index={1} />
+      </Grid>
+      <Grid item style={getDisplayVariation(2)}>
+        <Variations index={2} />
+      </Grid>
+      <Grid item style={getDisplayVariation(3)}>
+        <Variations index={3} />
+      </Grid>
+    </>
   );
 };

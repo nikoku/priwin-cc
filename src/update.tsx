@@ -61,8 +61,6 @@ export const Update = ({ updateState }: { updateState: UpdateState }) => {
   const isUpdated = updateList.some(
     (update) => Number(updateState[0][update.name]) > 0
   );
-  console.log(updateState[0]);
-  console.log(isUpdated);
   return (
     <Accordion defaultExpanded={isUpdated}>
       <AccordionSummary
