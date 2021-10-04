@@ -1,59 +1,77 @@
-import { useCallback } from "react";
-import Select from "react-select";
-import { PrincessCore, princessCoreList } from "./data";
-
-const containerStyleFn = (base: object) => ({
-  ...base,
-  width: "17em"
-});
+import { TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
+import { MyTableWithoutPaper } from "./table";
+import { MyPaper } from "./paper";
+import { Select } from "./select";
+import { princessCoreList, updateList } from "./data";
+import { Update, UpdateState } from "./update";
 
 const Header = () => {
   return (
-    <thead>
-      <tr>
-        <th>コア名</th>
-        <th>最大HP</th>
-        <th>最大TP</th>
-        <th>SS値</th>
-        <th>移動値</th>
-        <th>特殊機能</th>
-        <th>参照P</th>
-      </tr>
-    </thead>
+    <TableHead>
+      <TableRow>
+        <TableCell>コア名</TableCell>
+        <TableCell align="center">最大HP</TableCell>
+        <TableCell align="center">最大TP</TableCell>
+        <TableCell align="center">SS値</TableCell>
+        <TableCell align="center">移動値</TableCell>
+        <TableCell align="center">特殊機能</TableCell>
+        <TableCell align="center">参照P</TableCell>
+      </TableRow>
+    </TableHead>
   );
 };
 
-type State = [
-  PrincessCore | null,
-  React.Dispatch<React.SetStateAction<PrincessCore | null>>
-];
+type CoreState = [number, React.Dispatch<React.SetStateAction<number>>];
 
-export const PrincessCores = ({ cores }: { cores: State }) => {
+export const PrincessCores = ({
+  cores,
+  updateState
+}: {
+  cores: CoreState;
+  updateState: UpdateState;
+}) => {
   const [value, setValue] = cores;
-  const handleChange = useCallback((inputValue) => setValue(inputValue), []);
+  const cell = princessCoreList[value ?? -1];
+
+  const { extend, radicalization } = updateState[0];
+  const calcUpdate = (
+    value: number | null,
+    update: number,
+    coefficient: number
+  ) => {
+    const raw = value ?? "ー";
+    return update > 0
+      ? String(Number(value ?? 0) + update * coefficient) + `(${raw})`
+      : raw;
+  };
+  const hp = calcUpdate(cell?.hp, extend, 10);
+  const tp = calcUpdate(cell?.tp, extend, 5);
+  const ss = calcUpdate(cell?.ss, radicalization, 2);
+  const move = calcUpdate(cell?.move, radicalization, 1);
+
   return (
-    <table style={{ fontSize: "small" }}>
-      <Header />
-      <tbody>
-        <tr>
-          <td>
-            <Select
-              value={value}
-              options={princessCoreList}
-              onChange={handleChange}
-              styles={{
-                container: containerStyleFn
-              }}
-            />
-          </td>
-          <td>{value?.hp ?? "ー"}</td>
-          <td>{value?.tp ?? "ー"}</td>
-          <td>{value?.ss ?? "ー"}</td>
-          <td>{value?.move ?? "ー"}</td>
-          <td>{value?.special ?? "ー"}</td>
-          <td>{value?.page ?? "ー"}</td>
-        </tr>
-      </tbody>
-    </table>
+    <MyPaper>
+      <MyTableWithoutPaper title="プリンセスコア">
+        <Header />
+        <TableBody>
+          <TableRow key={0}>
+            <TableCell>
+              <Select
+                value={value}
+                setValue={setValue}
+                list={princessCoreList}
+              />
+            </TableCell>
+            <TableCell align="center">{hp}</TableCell>
+            <TableCell align="center">{tp}</TableCell>
+            <TableCell align="center">{ss}</TableCell>
+            <TableCell align="center">{move}</TableCell>
+            <TableCell align="center">{cell?.special ?? "ー"}</TableCell>
+            <TableCell align="center">{cell?.page ?? "ー"}</TableCell>
+          </TableRow>
+        </TableBody>
+      </MyTableWithoutPaper>
+      <Update updateState={updateState} />
+    </MyPaper>
   );
 };

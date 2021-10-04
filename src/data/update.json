@@ -1,0 +1,65 @@
+[
+  {
+    "label": "特技変更",
+    "cost": "1",
+    "desc": "特技を1つ変更する",
+    "page": "115",
+    "name": "changeSkill"
+  },
+  {
+    "label": "出力強化",
+    "cost": "5",
+    "desc": "装備してる全武装の攻撃力+2",
+    "page": "115",
+    "name": "powerUp"
+  },
+  {
+    "label": "加護拡張",
+    "cost": "5",
+    "desc": "最大HP+10、最大TP+5",
+    "page": "115",
+    "name": "extend"
+  },
+  {
+    "label": "先鋭化",
+    "cost": "5",
+    "desc": "SS値+2、移動値+1",
+    "page": "115",
+    "name": "radicalization"
+  },
+  {
+    "label": "特殊塗装",
+    "cost": "5",
+    "desc": "シナリオ開始時の自分の手札+1",
+    "page": "115",
+    "name": "paint"
+  },
+  {
+    "label": "交感結合",
+    "cost": "7",
+    "desc": "準備タイミングを2回行える。シナリオ1回",
+    "page": "115",
+    "name": "unite"
+  },
+  {
+    "label": "射線構築",
+    "cost": "7",
+    "desc": "射程内の任意の数のキャラクターを対象として選択可能。シナリオ1回",
+    "page": "115",
+    "name": "rayConstruction"
+  },
+  {
+    "label": "追加換装",
+    "cost": "9",
+    "desc": "バリエーション1つ追加",
+    "page": "115",
+    "name": "addVariation"
+  },
+  {
+    "label": "潜在解放",
+    "cost": "9",
+    "desc": "武装攻撃時、緊急回避不可にする。シナリオ1回",
+    "page": "115",
+    "name": "exploit"
+  }
+]

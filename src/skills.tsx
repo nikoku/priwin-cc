@@ -1,57 +1,45 @@
-import { useCallback } from "react";
-import Select from "react-select";
-import { Skill, skillList } from "./data";
-
-const containerStyleFn = (base: object) => ({
-  ...base,
-  width: "17em"
-});
+import { TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
+import { MyTable } from "./table";
+import { Select } from "./select";
+import { skillList } from "./data";
 
 const Header = () => {
-  const style = { minWidth: "21em" };
   return (
-    <thead>
-      <tr>
-        <th>特技名</th>
-        <th>消費TP</th>
-        <th>参照P</th>
-      </tr>
-    </thead>
+    <TableHead>
+      <TableRow>
+        <TableCell>特技名</TableCell>
+        <TableCell align="center">消費TP</TableCell>
+        <TableCell align="center">参照P</TableCell>
+      </TableRow>
+    </TableHead>
   );
 };
 
-type State = [Skill | null, React.Dispatch<React.SetStateAction<Skill | null>>];
+type State = [number, React.Dispatch<React.SetStateAction<number>>];
 
-const SkillTr = ({ state }: { state: State }) => {
+const SkillTr = ({ state, index }: { state: State; index: number }) => {
   const [value, setValue] = state;
-  const handleChange = useCallback((inputValue) => setValue(inputValue), []);
+  const cell = value === null ? null : skillList[value];
   return (
-    <tr>
-      <td>
-        <Select
-          value={value}
-          options={skillList}
-          onChange={handleChange}
-          styles={{
-            container: containerStyleFn
-          }}
-        />
-      </td>
-      <td>{value?.cost ?? "ー"}</td>
-      <td>{value?.page ?? "ー"}</td>
-    </tr>
+    <TableRow key={index}>
+      <TableCell>
+        <Select value={value} setValue={setValue} list={skillList} />
+      </TableCell>
+      <TableCell align="center">{cell?.cost ?? "ー"}</TableCell>
+      <TableCell align="center">{cell?.page ?? "ー"}</TableCell>
+    </TableRow>
   );
 };
 
 export const Skills = ({ skills }: { skills: State[] }) => {
   return (
-    <table style={{ fontSize: "small" }}>
+    <MyTable title="特技">
       <Header />
-      <tbody>
-        <SkillTr state={skills[0]} />
-        <SkillTr state={skills[1]} />
-        <SkillTr state={skills[2]} />
-      </tbody>
-    </table>
+      <TableBody>
+        <SkillTr state={skills[0]} index={0} />
+        <SkillTr state={skills[1]} index={1} />
+        <SkillTr state={skills[2]} index={2} />
+      </TableBody>
+    </MyTable>
   );
 };
