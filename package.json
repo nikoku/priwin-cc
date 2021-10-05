@@ -9,6 +9,7 @@
     "@material-ui/icons": "4.11.2",
     "@types/material-ui": "0.21.9",
     "@types/react-select": "4.0.17",
+    "@typescript-eslint/parser": "4.33.0",
     "gendts-material-ui-svg-icons": "1.0.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
