@@ -75,8 +75,7 @@ export const Update = ({ updateState }: { updateState: UpdateState }) => {
           <Header />
           <TableBody>
             {updateList.map((_, index) => {
-              type Name = keyof UpdateProgram;
-              const name: Name = updateList[index].name;
+              const name = updateList[index].name;
               type Target = { target: { value: number } };
 
               const setState = ({ target }: Target) => {

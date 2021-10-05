@@ -77,11 +77,11 @@ const useStorage = () => {
     variations3,
     memo,
     update
-  } as const;
+  };
   return {
     value,
     end
-  } as const;
+  };
 };
 
 type Storage = ReturnType<typeof useStorage>["value"];
