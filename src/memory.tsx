@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import SaveIcon from "@material-ui/icons/Save";
 import DeleteIcon from "@material-ui/icons/Delete";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-import { useStorageContext, useStorageData } from "./storage";
+import { useStorageData } from "./storage";
 
 import UUID from "uuidjs";
 
@@ -40,7 +40,8 @@ const pushData = (data: object) =>
 export const subscribeData = (id: string) =>
   fetch(gasUrl + `?q=${id}`, { method: "GET" })
     .then((response) => response.json())
-    .then((data) => data[0]["json"]);
+    .then((data) => data[0]["json"])
+    .catch(() => null);
 
 const Save = ({ style }: { style: React.CSSProperties }) => {
   const data = useStorageData();
