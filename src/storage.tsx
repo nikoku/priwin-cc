@@ -85,7 +85,8 @@ const useStorage = () => {
 };
 
 type Storage = ReturnType<typeof useStorage>["value"];
-const StorageContext = createContext<Storage>({});
+const temp: any = {};
+const StorageContext = createContext<Storage>(temp);
 
 export const useStorageContext = () => {
   return useContext(StorageContext);
