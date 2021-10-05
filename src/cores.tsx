@@ -32,9 +32,9 @@ export const PrincessCores = () => {
     update: number,
     coefficient: number
   ) => {
-    const raw = princessCore[0] ?? "ー";
+    const raw = value ?? "ー";
     return update > 0
-      ? String(Number(princessCore[0] ?? 0) + update * coefficient) + `(${raw})`
+      ? String(Number(value ?? 0) + update * coefficient) + `(${raw})`
       : raw;
   };
   const hp = calcUpdate(cell?.hp, extend, 10);
