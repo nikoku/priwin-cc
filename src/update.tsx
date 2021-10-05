@@ -38,7 +38,15 @@ const Header = () => {
   );
 };
 
-const UpdateTr = ({ index, value, setState }) => {
+const UpdateTr = ({
+  index,
+  value,
+  setState
+}: {
+  index: number;
+  value: number;
+  setState: any;
+}) => {
   return (
     <TableRow key={index}>
       <TableCell>{updateList[index].label}</TableCell>
