@@ -40,7 +40,7 @@ const Header = () => {
 
 const UpdateTr = ({ index, value, setState }) => {
   return (
-    <TableRow key={0}>
+    <TableRow key={index}>
       <TableCell>{updateList[index].label}</TableCell>
       <TableCell align="center">
         <TextField style={{ width: "2em" }} value={value} onChange={setState} />
@@ -75,7 +75,8 @@ export const Update = ({ updateState }: { updateState: UpdateState }) => {
           <Header />
           <TableBody>
             {updateList.map((_, index) => {
-              const name: keyof UpdateProgram = updateList[index].name;
+              type Name = keyof UpdateProgram;
+              const name: Name = updateList[index].name;
               type Target = { target: { value: number } };
 
               const setState = ({ target }: Target) => {

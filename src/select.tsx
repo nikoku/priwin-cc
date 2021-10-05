@@ -57,13 +57,15 @@ export const GroupSelect = ({
         inputProps={{ "aria-label": "index" }}
         style={{ width: "17em" }}
       >
-        <option value={-1}></option>
+        <option value={-1} key="default"></option>
         {groupList.map(({ label, cond }) => {
           const group = list.filter(cond);
           return (
-            <optgroup label={label}>
+            <optgroup label={label} key={label}>
               {group.map(({ value, label }) => (
-                <option value={value}>{label}</option>
+                <option value={value} key={label}>
+                  {label}
+                </option>
               ))}
             </optgroup>
           );
