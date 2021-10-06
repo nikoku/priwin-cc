@@ -42,10 +42,7 @@ const Tag = ({ index }: { index: number }) => {
   const { lifeTags } = useStorageContext();
   const { value, label } = list[index - 1];
 
-  const handleChange = (
-    event: React.ChangeEvent<{}>,
-    newValue: string | null
-  ) => {
+  const handleChange = (_: React.ChangeEvent<{}>, newValue: string | null) => {
     const temp = [...lifeTags[0]];
     temp[index - 1] = newValue ?? "";
     lifeTags[1](temp);

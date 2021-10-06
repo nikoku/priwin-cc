@@ -7,6 +7,7 @@ import { Weapons, VariationPanel } from "./weapons";
 import { Memory } from "./memory";
 import { SheetInfo } from "./sheetInfo";
 import { LifeTags } from "./lifetag";
+import { PersonalFlavors } from "./personalFlavor";
 import { StorageProvider } from "./storage";
 
 export default function App() {
@@ -26,6 +27,9 @@ export default function App() {
           <Grid item container direction="column" xs={5} spacing={1}>
             <Grid item>
               <LifeTags />
+            </Grid>
+            <Grid item>
+              <PersonalFlavors />
             </Grid>
           </Grid>
           <Grid item container direction="column" xs={7} spacing={1}>

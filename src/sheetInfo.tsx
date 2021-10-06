@@ -25,12 +25,7 @@ const TextBox = ({
     setValue(event.target.value);
   };
   return (
-    <Paper
-      style={{
-        // width: "max-content",
-        background: "#fff"
-      }}
-    >
+    <Paper style={{ background: "#fff" }}>
       <TextField
         size="small"
         value={value}
@@ -55,12 +50,7 @@ const ReadOnlyTextBox = ({
   width?: string;
 }) => {
   return (
-    <Paper
-      style={{
-        // width: "max-content",
-        background: "#fff"
-      }}
-    >
+    <Paper style={{ background: "#fff" }}>
       <TextField
         size="small"
         value={value}
