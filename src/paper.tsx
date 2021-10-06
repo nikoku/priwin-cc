@@ -6,7 +6,7 @@ import Box from "@material-ui/core/Box";
 export const MyPaper = ({ children }: { children: ReactNode }) => (
   <Paper
     style={{
-      width: "max-content",
+      // width: "max-content",
       background: blueGrey[400]
     }}
   >

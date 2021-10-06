@@ -167,20 +167,3 @@ export const Memory = () => {
     </>
   );
 };
-
-const getData = () => {
-  const key = getKey();
-  if (key === null) {
-    return;
-  }
-  const json = localStorage.getItem(key);
-  if (json === null) {
-    window.location.search = "";
-    return;
-  }
-
-  return JSON.parse(json);
-};
-export const load = () => {
-  const data = getData();
-};

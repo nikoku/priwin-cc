@@ -27,7 +27,7 @@ const TextBox = ({
   return (
     <Paper
       style={{
-        width: "max-content",
+        // width: "max-content",
         background: "#fff"
       }}
     >
@@ -57,7 +57,7 @@ const ReadOnlyTextBox = ({
   return (
     <Paper
       style={{
-        width: "max-content",
+        // width: "max-content",
         background: "#fff"
       }}
     >
@@ -119,7 +119,7 @@ export const SheetInfo = () => {
               multiline={true}
               value={memo[0]}
               setValue={memo[1]}
-              minWidth="30.8em"
+              minWidth="-webkit-fill-available"
             />
           </Grid>
         </Grid>

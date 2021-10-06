@@ -31,6 +31,7 @@ const useStorage = () => {
     addVariation: 0,
     exploit: 0
   });
+  const lifeTags = useState<string[]>(Array(13).fill(""));
 
   const [first, setFirst] = useState(true);
   const [end, setEnd] = useState(false);
@@ -61,6 +62,11 @@ const useStorage = () => {
       plName[1](data["plName"]);
       memo[1](data["memo"]);
       update[1]({ ...update, ...data["update"] });
+      lifeTags[1](
+        lifeTags[0].map((v, i) =>
+          data["lifeTags"]?.[i] ? data["lifeTags"][i] : v
+        )
+      );
     };
     func().then(() => setEnd(true));
   }
@@ -76,7 +82,8 @@ const useStorage = () => {
     variations2,
     variations3,
     memo,
-    update
+    update,
+    lifeTags
   };
   return {
     value,
@@ -119,7 +126,8 @@ export const useStorageData = () => {
     variations2,
     variations3,
     memo,
-    update
+    update,
+    lifeTags
   } = useStorageContext();
 
   return {
@@ -133,6 +141,7 @@ export const useStorageData = () => {
     variations2: variations2.map((n) => n[0]),
     variations3: variations3.map((n) => n[0]),
     memo: memo[0],
-    update: update[0]
+    update: update[0],
+    lifeTags: lifeTags[0]
   };
 };

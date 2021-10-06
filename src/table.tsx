@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import Box from "@material-ui/core/Box";
 import { Table, TableContainer, Paper, Typography } from "@material-ui/core";
 import { MyPaper } from "./paper";
 
@@ -12,7 +11,14 @@ export const MyTableWithoutPaper = ({
 }) => (
   <>
     <Typography style={{ color: "#fff" }}>{title}</Typography>
-    <TableContainer component={Paper} style={{ width: "max-content" }}>
+    <TableContainer
+      component={Paper}
+      style={
+        {
+          // width: "max-content"
+        }
+      }
+    >
       <Table size="small" aria-label="a dense table">
         {children}
       </Table>
