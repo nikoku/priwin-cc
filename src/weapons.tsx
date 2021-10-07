@@ -22,10 +22,66 @@ type weaponTr = {
   state: [number, React.Dispatch<React.SetStateAction<number>>];
 };
 
+const getRawRange = (cell: Weapon) => {
+  const minRange = cell.minRange;
+  const maxRange = cell.maxRange;
+  if (typeof minRange === "string") return minRange;
+  if (minRange === maxRange) return minRange;
+  return `${minRange}~${maxRange}`;
+};
+
+const useGetRange = (index: number, cell: Weapon | null) => {
+  const { weapons } = useStorageContext();
+  if (cell == null) return "ー";
+  const rawRange = getRawRange(cell);
+
+  if (index !== 3) return rawRange;
+  if (rawRange === "ー" || rawRange === "効果参照") return rawRange;
+  if (Number(topsList[weapons[2][0]]?.value) !== 13) return rawRange;
+
+  const minRange = Math.max(Number(cell?.minRange ?? 0) - 2, 0);
+  const maxRange = Number(cell?.maxRange ?? 0) + 2;
+  return `${minRange}~${maxRange} (${rawRange})`;
+};
+
+const useGetAvoid = (index: number, cell: Weapon | null) => {
+  const { weapons } = useStorageContext();
+  if (cell == null) return "ー";
+  const rawAvoid = cell.avoid;
+
+  if (index !== 2) return rawAvoid;
+  if (rawAvoid === "ー" || rawAvoid === "効果参照") return rawAvoid;
+  if (Number(topsList[weapons[2][0]]?.value) !== 14) return rawAvoid;
+
+  const avoid = rawAvoid + 1;
+  return `${avoid} (${rawAvoid})`;
+};
+
+const useGetPower = (cell: Weapon | null) => {
+  const { weapons, update } = useStorageContext();
+  if (cell == null) return "ー";
+  const rawPower = cell.power;
+
+  if (rawPower === "ー" || rawPower === "効果参照") return rawPower;
+
+  const glove = [
+    Number(armList[weapons[0][0]]?.value) === 29 ? 3 : 0,
+    Number(armList[weapons[1][0]]?.value) === 29 ? 3 : 0
+  ];
+  const { powerUp } = update[0];
+
+  const power = rawPower + glove[0] + glove[1] + powerUp * 2;
+  if (power === rawPower) return rawPower;
+  return `${power} (${rawPower})`;
+};
+
 const WeaponTr = ({ index, list, state }: weaponTr) => {
   const [value, setValue] = state;
-  const cell = value === null ? null : list[value];
+  const cell = value == null ? null : list[value];
 
+  const power = useGetPower(cell);
+  const range = useGetRange(index, cell);
+  const avoid = useGetAvoid(index, cell);
   return (
     <TableRow key={index}>
       <TableCell align="center">{parts[index]}</TableCell>
@@ -42,9 +98,9 @@ const WeaponTr = ({ index, list, state }: weaponTr) => {
         />
       </TableCell>
       <TableCell align="center">{cell?.type ?? "ー"}</TableCell>
-      <TableCell align="center">{cell?.power ?? "ー"}</TableCell>
-      <TableCell align="center">{cell?.range ?? "ー"}</TableCell>
-      <TableCell align="center">{cell?.avoid ?? "ー"}</TableCell>
+      <TableCell align="center">{power}</TableCell>
+      <TableCell align="center">{range}</TableCell>
+      <TableCell align="center">{avoid}</TableCell>
       <TableCell align="center">{cell?.page ?? "ー"}</TableCell>
     </TableRow>
   );

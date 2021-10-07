@@ -2,7 +2,7 @@ import { TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
 import { MyTableWithoutPaper } from "./table";
 import { MyPaper } from "./paper";
 import { Select } from "./select";
-import { princessCoreList } from "./data";
+import { princessCoreList, bottomsList } from "./data";
 import { Update } from "./update";
 import { useStorageContext } from "./storage";
 
@@ -22,25 +22,37 @@ const Header = () => {
   );
 };
 
+const calcUpdate = (
+  raw: number | null,
+  update: number,
+  coefficient: number
+) => {
+  if (raw == null) return "ー";
+  return update > 0
+    ? String(Number(raw ?? 0) + update * coefficient) + `(${raw})`
+    : raw;
+};
+
+const useCalcMove = (rawMove: number | null, update: number) => {
+  const { weapons } = useStorageContext();
+  if (rawMove == null) return "ー";
+  const updateBuff = update * 1;
+  const weaponBuff = Number(bottomsList[weapons[3][0]]?.value) === 14 ? 2 : 0;
+  const buff = updateBuff + weaponBuff;
+  if (buff === 0) return rawMove;
+  return `${rawMove + buff}(${rawMove})`;
+};
+
 export const PrincessCores = () => {
   const { princessCore, update } = useStorageContext();
   const cell = princessCoreList[princessCore[0] ?? -1];
 
   const { extend, radicalization } = update[0];
-  const calcUpdate = (
-    value: number | null,
-    update: number,
-    coefficient: number
-  ) => {
-    const raw = value ?? "ー";
-    return update > 0
-      ? String(Number(value ?? 0) + update * coefficient) + `(${raw})`
-      : raw;
-  };
+
   const hp = calcUpdate(cell?.hp, extend, 10);
   const tp = calcUpdate(cell?.tp, extend, 5);
   const ss = calcUpdate(cell?.ss, radicalization, 2);
-  const move = calcUpdate(cell?.move, radicalization, 1);
+  const move = useCalcMove(cell?.move, radicalization);
 
   return (
     <MyPaper>

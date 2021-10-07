@@ -12,7 +12,8 @@ export type Weapon = {
   label: string;
   type: "A" | "R" | "P";
   power: number | "効果参照" | "ー";
-  range: string;
+  minRange: number | "効果参照" | "ー";
+  maxRange: number;
   avoid: number | "効果参照" | "ー";
   page: number;
   desc: string;
