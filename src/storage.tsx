@@ -62,7 +62,7 @@ const useStorage = () => {
       pcName[1](data["pcName"]);
       plName[1](data["plName"]);
       memo[1](data["memo"]);
-      update[1]({ ...update, ...data["update"] });
+      update[1]({ ...update[0], ...data["update"] });
       lifeTags[1](
         lifeTags[0].map((v, i) =>
           data["lifeTags"]?.[i] ? data["lifeTags"][i] : v
