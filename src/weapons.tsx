@@ -16,10 +16,13 @@ const parts = [
   "ボトムス/◇"
 ];
 
+type WeaponState = [number, React.Dispatch<React.SetStateAction<number>>];
+
 type weaponTr = {
   index: number;
   list: Weapon[];
-  state: [number, React.Dispatch<React.SetStateAction<number>>];
+  state: WeaponState;
+  weapons: WeaponState[];
 };
 
 const getRawRange = (cell: Weapon) => {
@@ -30,8 +33,11 @@ const getRawRange = (cell: Weapon) => {
   return `${minRange}~${maxRange}`;
 };
 
-const useGetRange = (index: number, cell: Weapon | null) => {
-  const { weapons } = useStorageContext();
+const useGetRange = (
+  weapons: WeaponState[],
+  index: number,
+  cell: Weapon | null
+) => {
   if (cell == null) return "ー";
   const rawRange = getRawRange(cell);
 
@@ -44,8 +50,11 @@ const useGetRange = (index: number, cell: Weapon | null) => {
   return `${minRange}~${maxRange} (${rawRange})`;
 };
 
-const useGetAvoid = (index: number, cell: Weapon | null) => {
-  const { weapons } = useStorageContext();
+const useGetAvoid = (
+  weapons: WeaponState[],
+  index: number,
+  cell: Weapon | null
+) => {
   if (cell == null) return "ー";
   const rawAvoid = cell.avoid;
 
@@ -57,8 +66,8 @@ const useGetAvoid = (index: number, cell: Weapon | null) => {
   return `${avoid} (${rawAvoid})`;
 };
 
-const useGetPower = (cell: Weapon | null) => {
-  const { weapons, update } = useStorageContext();
+const useGetPower = (weapons: WeaponState[], cell: Weapon | null) => {
+  const { update } = useStorageContext();
   if (cell == null) return "ー";
   const rawPower = cell.power;
 
@@ -75,13 +84,13 @@ const useGetPower = (cell: Weapon | null) => {
   return `${power} (${rawPower})`;
 };
 
-const WeaponTr = ({ index, list, state }: weaponTr) => {
+const WeaponTr = ({ index, list, state, weapons }: weaponTr) => {
   const [value, setValue] = state;
   const cell = value == null ? null : list[value];
 
-  const power = useGetPower(cell);
-  const range = useGetRange(index, cell);
-  const avoid = useGetAvoid(index, cell);
+  const power = useGetPower(weapons, cell);
+  const range = useGetRange(weapons, index, cell);
+  const avoid = useGetAvoid(weapons, index, cell);
   return (
     <TableRow key={index}>
       <TableCell align="center">{parts[index]}</TableCell>
@@ -137,12 +146,42 @@ export const Weapons = () => {
     <MyTable title="武装">
       <Header />
       <TableBody>
-        <WeaponTr index={0} list={[autoList[0]]} state={tackleState} />
-        <WeaponTr index={1} list={[autoList[1]]} state={clossState} />
-        <WeaponTr index={2} list={armList} state={weapons[0]} />
-        <WeaponTr index={3} list={armList} state={weapons[1]} />
-        <WeaponTr index={4} list={topsList} state={weapons[2]} />
-        <WeaponTr index={5} list={bottomsList} state={weapons[3]} />
+        <WeaponTr
+          weapons={weapons}
+          index={0}
+          list={[autoList[0]]}
+          state={tackleState}
+        />
+        <WeaponTr
+          weapons={weapons}
+          index={1}
+          list={[autoList[1]]}
+          state={clossState}
+        />
+        <WeaponTr
+          weapons={weapons}
+          index={2}
+          list={armList}
+          state={weapons[0]}
+        />
+        <WeaponTr
+          weapons={weapons}
+          index={3}
+          list={armList}
+          state={weapons[1]}
+        />
+        <WeaponTr
+          weapons={weapons}
+          index={4}
+          list={topsList}
+          state={weapons[2]}
+        />
+        <WeaponTr
+          weapons={weapons}
+          index={5}
+          list={bottomsList}
+          state={weapons[3]}
+        />
       </TableBody>
     </MyTable>
   );
@@ -168,10 +207,30 @@ export const Variations = ({ index }: { index: 1 | 2 | 3 }) => {
     <MyTable title={`バリエーション${[null, "①", "②", "③"][index]}`}>
       <Header />
       <TableBody>
-        <WeaponTr index={2} list={armList} state={weapons[0]} />
-        <WeaponTr index={3} list={armList} state={weapons[1]} />
-        <WeaponTr index={4} list={topsList} state={weapons[2]} />
-        <WeaponTr index={5} list={bottomsList} state={weapons[3]} />
+        <WeaponTr
+          weapons={weapons}
+          index={2}
+          list={armList}
+          state={weapons[0]}
+        />
+        <WeaponTr
+          weapons={weapons}
+          index={3}
+          list={armList}
+          state={weapons[1]}
+        />
+        <WeaponTr
+          weapons={weapons}
+          index={4}
+          list={topsList}
+          state={weapons[2]}
+        />
+        <WeaponTr
+          weapons={weapons}
+          index={5}
+          list={bottomsList}
+          state={weapons[3]}
+        />
       </TableBody>
     </MyTable>
   );
