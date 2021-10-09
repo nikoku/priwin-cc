@@ -96,6 +96,7 @@ const Publish = ({ style }: { style: React.CSSProperties }) => {
   const publishData = () => {
     const func = async () => {
       const key = getKey();
+      if (key === null) return;
       await deleteDBData(key);
       await pushData(data);
       alert("公開しました");
