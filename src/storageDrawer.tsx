@@ -80,10 +80,8 @@ const DrawerList = () => {
 };
 
 type Event = React.KeyboardEvent | React.MouseEvent;
-const checkKeyEvent = (event: Event) =>
-  event.type === "keydown" &&
-  ((event as React.KeyboardEvent).key === "Tab" ||
-    (event as React.KeyboardEvent).key === "Shift");
+const checkKeyEvent = (event: any) =>
+  (event.type === "keydown" && event.key === "Tab") || event.key === "Shift";
 
 export const StorageList = () => {
   const [state, setState] = useState(false);
