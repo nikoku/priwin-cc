@@ -10,13 +10,22 @@ import { LifeTags } from "./lifetag";
 import { PersonalFlavors } from "./personalFlavor";
 import { StorageProvider } from "./storage";
 
+const baseUrl = window.location.href.split("?")[0];
+
 export default function App() {
   return (
     <div className="App" style={{ textAlign: "left" }}>
       <StorageProvider loadingNode={<div>Loading...</div>}>
         <Grid container spacing={1}>
           <Grid item xs={12}>
-            <h2>プリンセスウイング　キャラクターシート</h2>
+            <h2>
+              <a
+                href={baseUrl}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                プリンセスウイング　キャラクターシート
+              </a>
+            </h2>
           </Grid>
           <Grid item container xs={12} spacing={1}>
             <Memory />

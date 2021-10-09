@@ -21,10 +21,6 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const visibility = (cond: boolean): { visibility: "visible" | "hidden" } => ({
-  visibility: cond ? "visible" : "hidden"
-});
-
 const baseUrl = window.location.href.split("?")[0];
 const DrawerList = () => {
   const classes = useStyles();
