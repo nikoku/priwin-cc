@@ -4,6 +4,7 @@ import SaveIcon from "@material-ui/icons/Save";
 import DeleteIcon from "@material-ui/icons/Delete";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import { useStorageData } from "./storage";
+import { StorageList } from "./storageDrawer";
 
 import UUID from "uuidjs";
 
@@ -23,11 +24,11 @@ const postHeaders = {
   Accept: "application/json, text/javascript, */*; q=0.01",
   "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
 };
-const deleteDBData = () =>
+export const deleteDBData = (key: string) =>
   fetch(gasUrl + "?method=delete", {
     method: "POST",
     headers: postHeaders,
-    body: `id=${getKey()}`
+    body: `id=${key}`
   }).catch((resp) => console.log(resp));
 
 const pushData = (data: object) =>
@@ -94,7 +95,8 @@ const Publish = ({ style }: { style: React.CSSProperties }) => {
   const data = useStorageData();
   const publishData = () => {
     const func = async () => {
-      await deleteDBData();
+      const key = getKey();
+      await deleteDBData(key);
       await pushData(data);
       alert("公開しました");
     };
@@ -122,7 +124,7 @@ const Delete = ({ style }: { style: React.CSSProperties }) => {
         return;
       }
 
-      await deleteDBData();
+      await deleteDBData(key);
       localStorage.removeItem(key);
       window.location.search = "";
     };
@@ -163,6 +165,9 @@ export const Memory = () => {
       </Grid>
       <Grid item>
         <Delete style={visibility(hasLocal)} />
+      </Grid>
+      <Grid item>
+        <StorageList />
       </Grid>
     </>
   );
