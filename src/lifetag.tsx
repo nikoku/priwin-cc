@@ -18,6 +18,7 @@ import {
   memoryList
 } from "./data/lifeTagData";
 import { useStorageContext } from "./storage";
+import { range } from "./util";
 
 const list = [
   { value: hobbyList, label: "①趣味" },
@@ -34,9 +35,6 @@ const list = [
   { value: troubleList, label: "⑫悩み事" },
   { value: memoryList, label: "⑬思い出" }
 ];
-
-const range = (start: number, end: number) =>
-  [...Array(end - start + 1)].map((_, i) => start + i);
 
 const Tag = ({ index }: { index: number }) => {
   const { lifeTags } = useStorageContext();

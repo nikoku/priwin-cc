@@ -4,6 +4,7 @@ import SaveIcon from "@material-ui/icons/Save";
 import DeleteIcon from "@material-ui/icons/Delete";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import { useStorageData } from "./storage";
+import { GetPiece } from "./piece";
 import { StorageList } from "./storageDrawer";
 
 import UUID from "uuidjs";
@@ -166,6 +167,9 @@ export const Memory = () => {
       </Grid>
       <Grid item>
         <Delete style={visibility(hasLocal)} />
+      </Grid>
+      <Grid item>
+        <GetPiece />
       </Grid>
       <Grid item>
         <StorageList />

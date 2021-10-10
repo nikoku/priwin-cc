@@ -33,7 +33,7 @@ const getRawRange = (cell: Weapon) => {
   return `${minRange}~${maxRange}`;
 };
 
-const useGetRange = (
+export const useGetRange = (
   weapons: WeaponState[],
   index: number,
   cell: Weapon | null
@@ -50,7 +50,7 @@ const useGetRange = (
   return `${minRange}~${maxRange} (${rawRange})`;
 };
 
-const useGetAvoid = (
+export const useGetAvoid = (
   weapons: WeaponState[],
   index: number,
   cell: Weapon | null
@@ -66,7 +66,7 @@ const useGetAvoid = (
   return `${avoid} (${rawAvoid})`;
 };
 
-const useGetPower = (weapons: WeaponState[], cell: Weapon | null) => {
+export const useGetPower = (weapons: WeaponState[], cell: Weapon | null) => {
   const { update } = useStorageContext();
   if (cell == null) return "ー";
   const rawPower = cell.power;
@@ -141,7 +141,7 @@ const Header = () => {
 export const Weapons = () => {
   const { weapons } = useStorageContext();
   const tackleState = useState(0);
-  const clossState = useState(1);
+  const clossState = useState(0);
   return (
     <MyTable title="武装">
       <Header />
@@ -155,7 +155,7 @@ export const Weapons = () => {
         <WeaponTr
           weapons={weapons}
           index={1}
-          list={[autoList[1]]}
+          list={[{ ...autoList[1], value: 0 }]}
           state={clossState}
         />
         <WeaponTr
