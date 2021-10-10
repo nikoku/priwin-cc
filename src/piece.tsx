@@ -151,13 +151,17 @@ const useCreateJson = () => {
 
 const onClick = (json: string) => () => {
   if (!navigator.clipboard) {
-    alert("エラー1");
+    alert("非対応ブラウザ");
     return;
   }
   navigator.clipboard
     .writeText(json)
-    .then(() => alert("取得完了"))
-    .catch(() => alert("エラー2"));
+    .then(() =>
+      alert(
+        "取得完了\n※クリップボードにコピー済み。ccfoliaの画面上でCtrl+Vすれば駒が出来る"
+      )
+    )
+    .catch(() => alert("エラー"));
 };
 
 export const GetPiece = () => {
