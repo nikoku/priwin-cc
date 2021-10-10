@@ -33,6 +33,7 @@ const useStorage = () => {
   });
   const lifeTags = useState<string[]>(Array(13).fill(""));
   const personalFlavors = useState<string[]>(Array(6).fill(""));
+  const additionalSkills = useState<number[]>([]);
 
   const [first, setFirst] = useState(true);
   const [end, setEnd] = useState(false);
@@ -73,6 +74,11 @@ const useStorage = () => {
           data["personalFlavors"]?.[i] ? data["personalFlavors"][i] : v
         )
       );
+      additionalSkills[1](
+        [...(data["additionalSkills"] ?? [])].map((v, i) =>
+          data["additionalSkills"]?.[i] ? data["additionalSkills"][i] : v
+        )
+      );
     };
     func().then(() => setEnd(true));
   }
@@ -90,7 +96,8 @@ const useStorage = () => {
     memo,
     update,
     lifeTags,
-    personalFlavors
+    personalFlavors,
+    additionalSkills
   };
   return {
     value,
@@ -135,7 +142,8 @@ export const useStorageData = () => {
     memo,
     update,
     lifeTags,
-    personalFlavors
+    personalFlavors,
+    additionalSkills
   } = useStorageContext();
 
   return {
@@ -151,6 +159,7 @@ export const useStorageData = () => {
     memo: memo[0],
     update: update[0],
     lifeTags: lifeTags[0],
-    personalFlavors: personalFlavors[0]
+    personalFlavors: personalFlavors[0],
+    additionalSkills: additionalSkills[0]
   };
 };

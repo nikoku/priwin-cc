@@ -66,10 +66,13 @@ const ReadOnlyTextBox = ({
 };
 
 const useCalcExp = () => {
-  const { update } = useStorageContext();
-  return updateList
-    .map(({ name, cost }) => update[0][name] * cost)
-    .reduce((a, x) => a + x);
+  const { update, additionalSkills } = useStorageContext();
+  return (
+    updateList
+      .map(({ name, cost }) => update[0][name] * cost)
+      .reduce((a, x) => a + x) +
+    additionalSkills[0].length * 3
+  );
 };
 
 export const SheetInfo = () => {
