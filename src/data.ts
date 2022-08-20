@@ -7,8 +7,8 @@ import cores from "./data/core.json";
 import skills from "./data/skill.json";
 import updatePrograms from "./data/update.json";
 
-const NanType = ["効果参照", "ー"] as const;
-type NumberOrEffect = number | typeof NanType[number];
+const NanType = ["効果参照", "ー"];
+type NumberOrEffect = number | "効果参照" | "ー";
 
 export type Weapon = {
   value: number;
