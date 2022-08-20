@@ -7,7 +7,7 @@
     "minRange": 1,
     "maxRange": 1,
     "avoid": 1,
-    "page": "93",
+    "page": "PW 93",
     "desc": ""
   },
   {
@@ -18,7 +18,7 @@
     "minRange": "効果参照",
     "maxRange": 0,
     "avoid": "効果参照",
-    "page": "93",
+    "page": "PW 93",
     "desc": ""
   }
 ]

@@ -7,32 +7,44 @@ import cores from "./data/core.json";
 import skills from "./data/skill.json";
 import updatePrograms from "./data/update.json";
 
+type NumberOrEffect = number | "効果参照" | "ー";
+
 export type Weapon = {
   value: number;
   label: string;
   type: "A" | "R" | "P";
-  power: number | "効果参照" | "ー";
-  minRange: number | "効果参照" | "ー";
+  power: NumberOrEffect;
+  minRange: NumberOrEffect;
   maxRange: number;
-  avoid: number | "効果参照" | "ー";
-  page: number;
+  avoid: NumberOrEffect;
+  page: string;
   desc: string;
 };
 
+function convertInteger(list: Weapon[]): Weapon[] {
+  const convert = (node: NumberOrEffect) =>
+    typeof node === "number" ? Number(node) : node;
+
+  return [...list].map((node) => ({
+    ...node,
+    power: convert(node.power)
+  }));
+}
+
 // @ts-ignore
-export const autoList: Weapon[] = autoWeapons;
+export const autoList: Weapon[] = convertInteger(autoWeapons);
 // @ts-ignore
-export const armList: Weapon[] = armWeapons;
+export const armList: Weapon[] = convertInteger(armWeapons);
 // @ts-ignore
-export const topsList: Weapon[] = topsWeapons;
+export const topsList: Weapon[] = convertInteger(topsWeapons);
 // @ts-ignore
-export const bottomsList: Weapon[] = bottomsWeapons;
+export const bottomsList: Weapon[] = convertInteger(bottomsWeapons);
 
 export type WingDrive = {
   value: number;
   label: string;
   timing: string;
-  page: number;
+  page: string;
   desc: string;
 };
 
@@ -48,7 +60,7 @@ export type PrincessCore = {
   move: number;
   special: string;
   variation: number;
-  page: number;
+  page: string;
   desc: string;
 };
 
@@ -59,7 +71,7 @@ export type Skill = {
   value: number;
   label: string;
   cost: number;
-  page: number;
+  page: string;
   desc: string;
 };
 
@@ -70,7 +82,7 @@ export type UpdateProgram = {
   label: string;
   cost: number;
   desc: string;
-  page: number;
+  page: string;
   name:
     | "changeSkill"
     | "powerUp"
