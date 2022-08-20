@@ -7,7 +7,8 @@ import cores from "./data/core.json";
 import skills from "./data/skill.json";
 import updatePrograms from "./data/update.json";
 
-type NumberOrEffect = number | "効果参照" | "ー";
+const NanType = ["効果参照", "ー"] as const;
+type NumberOrEffect = number | typeof NanType[number];
 
 export type Weapon = {
   value: number;
@@ -22,8 +23,11 @@ export type Weapon = {
 };
 
 function convertInteger(list: Weapon[]): Weapon[] {
+  const shouldNumber = (node: NumberOrEffect) =>
+    NanType.every((e) => e !== node);
+
   const convert = (node: NumberOrEffect) =>
-    typeof node === "number" ? Number(node) : node;
+    shouldNumber(node) ? Number(node) : node;
 
   return [...list].map((node) => ({
     ...node,
