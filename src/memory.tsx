@@ -10,7 +10,7 @@ import { StorageList } from "./storageDrawer";
 import UUID from "uuidjs";
 
 const gasUrl =
-  "https://script.google.com/macros/s/AKfycbx4XX2hHGcxOExvPREuARdqhvx6sE6xmmxYw3FzN5OVgR-IbcQ-3J4QoAFgu0t4xfMU5w/exec";
+  "https://script.google.com/macros/s/AKfycbw8oixP9IAJ-djS58NNixy5DttoGByymlbR1qhackK74sK6hpAhjbtycqJZb4JJii_e9g/exec";
 
 export const getKey = () => {
   if (window.location.search === "") {
