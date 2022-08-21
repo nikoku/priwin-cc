@@ -20,6 +20,9 @@ export type UpdateProgram = {
   rayConstruction: number;
   addVariation: number;
   exploit: number;
+  homing: number;
+  repair: number;
+  summon: number;
 };
 
 const paddingRight = { paddingRight: "0.5em" };
