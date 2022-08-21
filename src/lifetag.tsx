@@ -26,7 +26,7 @@ const list = [
   { value: hobbyList, label: "③熱中しているもの" },
   { value: subjectList, label: "④得意科目" },
   { value: subjectList, label: "⑤苦手科目" },
-  { value: committeeList, label: "⑥委員会" },
+  { value: committeeList, label: "⑥委員会 or チームでの立場" },
   { value: clubList, label: "⑦部活" },
   { value: arbeitList, label: "⑧アルバイト" },
   { value: foodList, label: "⑨好きな食べ物" },
