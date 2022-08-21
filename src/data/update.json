@@ -61,5 +61,26 @@
     "desc": "武装攻撃時、緊急回避不可にする。シナリオ1回",
     "page": "PW 115",
     "name": "exploit"
+  },
+  {
+    "label": "誘導強化",
+    "cost": "5",
+    "desc": "ー",
+    "page": "VI 58",
+    "name": "homing"
+  },
+  {
+    "label": "高速修復",
+    "cost": "7",
+    "desc": "ー",
+    "page": "VI 58",
+    "name": "repair"
+  },
+  {
+    "label": "扶翼召喚",
+    "cost": "9",
+    "desc": "ー",
+    "page": "VI 58",
+    "name": "summon"
   }
 ]

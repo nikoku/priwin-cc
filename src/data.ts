@@ -10,83 +10,89 @@ import updatePrograms from "./data/update.json";
 const NanType = ["効果参照", "ー"];
 type NumberOrEffect = number | "効果参照" | "ー";
 
-export type Weapon = {
+type BaseType = {
   value: number;
   label: string;
+  page: string;
+  desc: string;
+};
+
+export type Weapon = {
   type: "A" | "R" | "P";
   power: NumberOrEffect;
   minRange: NumberOrEffect;
   maxRange: number;
   avoid: NumberOrEffect;
-  page: string;
-  desc: string;
-};
+} & BaseType;
 
-function convertInteger(list: Weapon[]): Weapon[] {
+function convertInteger(node: Weapon): Weapon {
   const shouldNumber = (node: NumberOrEffect) =>
     NanType.every((e) => e !== node);
 
   const convert = (node: NumberOrEffect) =>
     shouldNumber(node) ? Number(node) : node;
 
-  return [...list].map((node) => ({
+  return {
     ...node,
-    power: convert(node.power)
-  }));
+    power: convert(node.power),
+    minRange: convert(node.minRange)
+  };
 }
 
-// @ts-ignore
-export const autoList: Weapon[] = convertInteger(autoWeapons);
-// @ts-ignore
-export const armList: Weapon[] = convertInteger(armWeapons);
-// @ts-ignore
-export const topsList: Weapon[] = convertInteger(topsWeapons);
-// @ts-ignore
-export const bottomsList: Weapon[] = convertInteger(bottomsWeapons);
+export const autoList: Weapon[] = autoWeapons
+  .map((v, i) => ({ ...v, value: i }))
+  // @ts-ignore
+  .map(convertInteger);
+export const armList: Weapon[] = armWeapons
+  .map((v, i) => ({ ...v, value: i }))
+  // @ts-ignore
+  .map(convertInteger);
+export const topsList: Weapon[] = topsWeapons
+  .map((v, i) => ({ ...v, value: i }))
+  // @ts-ignore
+  .map(convertInteger);
+export const bottomsList: Weapon[] = bottomsWeapons
+  .map((v, i) => ({ ...v, value: i }))
+  // @ts-ignore
+  .map(convertInteger);
 
 export type WingDrive = {
-  value: number;
-  label: string;
   timing: string;
-  page: string;
-  desc: string;
-};
+} & BaseType;
 
 // @ts-ignore
-export const wingDriveList: WingDrive[] = wingDrives;
+export const wingDriveList: WingDrive[] = [...wingDrives].map((v, i) => ({
+  ...v,
+  value: i
+}));
 
 export type PrincessCore = {
-  value: number;
-  label: string;
   hp: number;
   tp: number;
   ss: number;
   move: number;
   special: string;
   variation: number;
-  page: string;
-  desc: string;
-};
+} & BaseType;
 
 // @ts-ignore
-export const princessCoreList: PrincessCore[] = cores;
+export const princessCoreList: PrincessCore[] = [...cores].map((v, i) => ({
+  ...v,
+  value: i
+}));
 
 export type Skill = {
-  value: number;
-  label: string;
   cost: number;
-  page: string;
-  desc: string;
-};
+} & BaseType;
 
 // @ts-ignore
-export const skillList: Skill[] = skills;
+export const skillList: Skill[] = [...skills].map((v, i) => ({
+  ...v,
+  value: i
+}));
 
 export type UpdateProgram = {
-  label: string;
   cost: number;
-  desc: string;
-  page: string;
   name:
     | "changeSkill"
     | "powerUp"
@@ -97,7 +103,10 @@ export type UpdateProgram = {
     | "rayConstruction"
     | "addVariation"
     | "exploit";
-};
+} & BaseType;
 
 // @ts-ignore
-export const updateList: UpdateProgram[] = updatePrograms;
+export const updateList: UpdateProgram[] = [...updatePrograms].map((v, i) => ({
+  ...v,
+  value: i
+}));

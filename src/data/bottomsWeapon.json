@@ -1,6 +1,5 @@
 [
   {
-    "value": "0",
     "label": "アヴァロンライフル",
     "type": "A",
     "power": "6",
@@ -11,7 +10,6 @@
     "desc": ""
   },
   {
-    "value": "1",
     "label": "アサルトレッグ",
     "type": "A",
     "power": "8",
@@ -22,7 +20,6 @@
     "desc": ""
   },
   {
-    "value": "2",
     "label": "アドバンスドスラスター",
     "type": "A",
     "power": "ー",
@@ -33,7 +30,6 @@
     "desc": ""
   },
   {
-    "value": "3",
     "label": "オールレンジアシスター",
     "type": "A",
     "power": "ー",
@@ -44,7 +40,6 @@
     "desc": ""
   },
   {
-    "value": "4",
     "label": "グレネイドビット",
     "type": "A",
     "power": "4",
@@ -55,7 +50,6 @@
     "desc": ""
   },
   {
-    "value": "5",
     "label": "スカートビット",
     "type": "A",
     "power": "5",
@@ -66,7 +60,6 @@
     "desc": ""
   },
   {
-    "value": "6",
     "label": "スコーピオンテイル",
     "type": "A",
     "power": "7",
@@ -77,7 +70,6 @@
     "desc": ""
   },
   {
-    "value": "7",
     "label": "スフィアプレッシャー",
     "type": "A",
     "power": "0",
@@ -88,7 +80,6 @@
     "desc": ""
   },
   {
-    "value": "8",
     "label": "ディスチャージャー",
     "type": "A",
     "power": "ー",
@@ -99,7 +90,6 @@
     "desc": ""
   },
   {
-    "value": "9",
     "label": "ハイヒールドロップ",
     "type": "A",
     "power": "10",
@@ -110,7 +100,6 @@
     "desc": ""
   },
   {
-    "value": "10",
     "label": "プラズマブースター",
     "type": "A",
     "power": "ー",
@@ -121,7 +110,6 @@
     "desc": ""
   },
   {
-    "value": "11",
     "label": "カウンターフィールド",
     "type": "R",
     "power": "ー",
@@ -132,7 +120,6 @@
     "desc": ""
   },
   {
-    "value": "12",
     "label": "スペアブースター",
     "type": "R",
     "power": "ー",
@@ -143,7 +130,6 @@
     "desc": ""
   },
   {
-    "value": "13",
     "label": "アディショナルブースター",
     "type": "P",
     "power": "ー",
@@ -154,7 +140,6 @@
     "desc": ""
   },
   {
-    "value": "14",
     "label": "クリアブーツ",
     "type": "P",
     "power": "ー",
@@ -162,6 +147,156 @@
     "maxRange": "ー",
     "avoid": "ー",
     "page": "PW 101",
+    "desc": ""
+  },
+  {
+    "label": "オーロラカーテンビット",
+    "type": "A",
+    "power": "5",
+    "minRange": "4",
+    "maxRange": "5",
+    "avoid": "2",
+    "page": "VI 56",
+    "desc": ""
+  },
+  {
+    "label": "サイキックフィールド",
+    "type": "A",
+    "power": "ー",
+    "minRange": "ー",
+    "maxRange": "ー",
+    "avoid": "ー",
+    "page": "VI 56",
+    "desc": ""
+  },
+  {
+    "label": "サイコフィールドビット",
+    "type": "A",
+    "power": "6",
+    "minRange": "5",
+    "maxRange": "6",
+    "avoid": "2",
+    "page": "VI 56",
+    "desc": ""
+  },
+  {
+    "label": "サポータービット",
+    "type": "A",
+    "power": "ー",
+    "minRange": "ー",
+    "maxRange": "ー",
+    "avoid": "ー",
+    "page": "VI 56",
+    "desc": ""
+  },
+  {
+    "label": "ドリルビット",
+    "type": "A",
+    "power": "6",
+    "minRange": "1",
+    "maxRange": "2",
+    "avoid": "2",
+    "page": "VI 56",
+    "desc": ""
+  },
+  {
+    "label": "フィンテイルビット",
+    "type": "A",
+    "power": "5",
+    "minRange": "4",
+    "maxRange": "6",
+    "avoid": "2",
+    "page": "VI 56",
+    "desc": ""
+  },
+  {
+    "label": "プリズミックギター",
+    "type": "A",
+    "power": "ー",
+    "minRange": "ー",
+    "maxRange": "ー",
+    "avoid": "ー",
+    "page": "VI 56",
+    "desc": ""
+  },
+  {
+    "label": "ポリパードビット",
+    "type": "A",
+    "power": "5",
+    "minRange": "1",
+    "maxRange": "3",
+    "avoid": "2",
+    "page": "VI 57",
+    "desc": ""
+  },
+  {
+    "label": "メテオクラッシャー",
+    "type": "A",
+    "power": "5",
+    "minRange": "1",
+    "maxRange": "1",
+    "avoid": "1",
+    "page": "VI 57",
+    "desc": ""
+  },
+  {
+    "label": "ライトオブセーバー",
+    "type": "A",
+    "power": "ー",
+    "minRange": "ー",
+    "maxRange": "ー",
+    "avoid": "ー",
+    "page": "VI 57",
+    "desc": ""
+  },
+  {
+    "label": "エリアルスケート",
+    "type": "R",
+    "power": "ー",
+    "minRange": "ー",
+    "maxRange": "ー",
+    "avoid": "ー",
+    "page": "VI 57",
+    "desc": ""
+  },
+  {
+    "label": "シールドレイザー",
+    "type": "R",
+    "power": "ー",
+    "minRange": "ー",
+    "maxRange": "ー",
+    "avoid": "ー",
+    "page": "VI 57",
+    "desc": ""
+  },
+  {
+    "label": "メルティスカート",
+    "type": "P",
+    "power": "ー",
+    "minRange": "ー",
+    "maxRange": "ー",
+    "avoid": "ー",
+    "page": "VI 57",
+    "desc": ""
+  },
+  {
+    "label": "リインフォースバンド",
+    "type": "P",
+    "power": "ー",
+    "minRange": "ー",
+    "maxRange": "ー",
+    "avoid": "ー",
+    "page": "VI 57",
+    "desc": ""
+  },
+  {
+    "label": "ルミナスコルセット",
+    "type": "P",
+    "power": "ー",
+    "minRange": "ー",
+    "maxRange": "ー",
+    "avoid": "ー",
+    "page": "VI 57",
     "desc": ""
   }
 ]

@@ -1,6 +1,5 @@
 [
   {
-    "value": 0,
     "label": "タックル",
     "type": "A",
     "power": 5,
@@ -11,7 +10,6 @@
     "desc": ""
   },
   {
-    "value": 1,
     "label": "クロスユニゾン",
     "type": "A",
     "power": "効果参照",

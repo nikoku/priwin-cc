@@ -29,7 +29,10 @@ const useStorage = () => {
     unite: 0,
     rayConstruction: 0,
     addVariation: 0,
-    exploit: 0
+    exploit: 0,
+    homing: 0,
+    repair: 0,
+    summon: 0
   });
   const lifeTags = useState<string[]>(Array(13).fill(""));
   const personalFlavors = useState<string[]>(Array(6).fill(""));
